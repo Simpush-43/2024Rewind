@@ -60,7 +60,7 @@ const wrapper = document.getElementById('wrapper')
  const button=document.getElementById('Button');
  button.addEventListener('click',()=>{
   console.log('button is clicked')
-  // pianAudio.play();
+  pianAudio.play();
   text.style.display ='none'
   text2.innerHTML ='CHOOSE THE CARD💓'
 wrapper.style.display ='block'
