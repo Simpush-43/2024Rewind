@@ -1,0 +1,337 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(214, 67, 204);
+}
+.heart-contianer{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+ top: 0;
+ left: 0;
+ z-index: -1;
+
+}
+
+.heart{
+  position: relative;
+  width: 24px; 
+	height: 24px; 
+	background: #FF5252; /* 色 */
+	clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+	transform: scale(5);
+  animation: bounce 5s linear 1s infinite,  float 6s ease-in-out infinite, rotate 5s linear infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  transform-style: preserve-3d; 
+  perspective: 1000px;
+}
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #f82964;
+  border-radius: 50%;
+  top: 0;
+  box-shadow: 2px 7px 17px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+.heart::before{
+  left: -15px;
+}
+.heart::after{
+  right: -15px;
+}
+
+@keyframes bounce {
+  0%,100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(20px);
+  }
+}
+@keyframes float {
+  0%{
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(10px);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.element{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.Text1 {
+  font-size: 4rem;
+  font-family: "Baloo Bhaijaan 2", serif;
+  text-align: center;
+  padding: 6px;
+  /* transform: rotate(-20deg); */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 3px 1px 0 #fbf7f7, 
+  6px 1px 0 #e85f5f, 
+  9px 3px 0 #FF5252;
+}
+h1 span{
+  display: inline-block;
+  animation: visible 2s  0.4 1 ease-in ;
+}
+@keyframes visible {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+100%{
+  opacity: 1;
+}
+}
+/* From Uiverse.io by htwarriors108 */ 
+button {
+  background-color: #fff;
+  position: relative;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  cursor: pointer;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  border: none;
+}
+
+button:active {
+  scale: 1.2;
+}
+
+button:hover {
+  width: 180px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  opacity: 0;
+  transition: 0.5s;
+  border: 1px solid black;
+}
+
+button:hover::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  filter: blur(15px);
+  transition: 0.5s;
+  z-index: -1;
+  opacity: 0;
+  
+}
+
+button:hover::after {
+  opacity: 0.5;
+}
+
+button svg {
+  color: #777;
+  width: auto;
+  height: 30px;
+  transition: 0.5s;
+  transition-delay: 0.25s;
+}
+
+button:hover svg {
+  transform: scale(0);
+  color: #fff;
+  transition-delay: 0s;
+}
+
+button span {
+  position: absolute;
+}
+
+button .title {
+  color: #fff;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: scale(0);
+  transition: 0.5s;
+  transition-delay: 0s;
+  font-weight: 600;
+  
+}
+
+button:hover .title {
+  transform: scale(1);
+  transition-delay: 0.25s;
+}
+/* From Uiverse.io by ilkhoeri */ 
+.wrapper {
+width: 100vw;
+  height: 70vh;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  display: none;
+}
+
+.inner {
+  --w: 120px;
+  --h: 170px;
+  --translateZ: calc((var(--w) + var(--h)) + -170px);
+  --rotateX: -15deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 25%;
+  left: calc(50% - (var(--w) / 2) - 2.5px);
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+  animation: rotating 20s linear infinite; /* */
+}
+@keyframes rotating {
+  from {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(0);
+  }
+  to {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(1turn);
+  }
+}
+
+.card {
+  position: absolute;
+  border: 2px solid rgba(var(--color-card));
+  border-radius: 12px;
+  overflow: hidden;
+  inset: 0;
+  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
+    translateZ(var(--translateZ));
+    --angle: calc(var(--index) * (360deg / var(--quantity)));
+}
+.card:hover{
+  cursor: pointer;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  background: #0000
+    radial-gradient(
+      circle,
+      rgba(var(--color-card), 0.2) 0%,
+      rgba(var(--color-card), 0.6) 80%,
+      rgba(var(--color-card), 0.9) 100%
+    ) center center cover;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.Letter{
+  display: none;
+}
+/* From Uiverse.io by barisdogansutcu */ 
+.Btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 0 10px;
+  color: white;
+  text-shadow: 2px 2px rgb(116, 116, 116);
+  text-transform: uppercase;
+  cursor: pointer;
+  border: solid 2px black;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 17px;
+  background-color: hsl(49deg 98% 60%);
+  /* border-radius: 50px; */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.Btn:active {
+  transform: scale(0.9);
+  transition: all 100ms ease;
+}
+
+.Btn svg {
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.play {
+  transition: all 0.5s ease;
+  transition-delay: 300ms;
+}
+
+.Btn:hover svg {
+  transform: scale(3) translate(50%);
+}
+
+.now {
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.Btn:hover .now {
+  transform: translateX(10px);
+  transition-delay: 300ms;
+}
+
+.Btn:hover .play {
+  transform: translateX(200%);
+  transition-delay: 300ms;
+}
+/* From Uiverse.io by Yaya12085 */ 
